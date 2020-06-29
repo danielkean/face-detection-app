@@ -1,10 +1,14 @@
-const videoContainer = document.getElementById('video-container');
+// References
 const video = document.getElementById('video');
-
-const colourSection = document.getElementById('colour-contents');
+const videoContainer = document.getElementById('video-container');
+const colourContents = document.getElementById('colour-contents');
 const expressionText = document.getElementById('expression-text');
-const videoWidth = 1040;
-const videoHeight = 585;
+
+// Settings
+const videoWidth = 1040;            // Width in pixels that the video should output to
+const videoHeight = 585;            // Height in pixels that the video should output to
+const updateDelay = 50;             // How often the face detection should run in ms
+const expressionThreshold = 0.7;    // How strong an expression has to be for it to be dominant
 
 // Required for a NodeJS environment
 faceapi.env.monkeyPatch
@@ -56,15 +60,12 @@ function startVideo()
 
 function changeExpressionColour(colour, expressionName)
 {
-    colourSection.style.backgroundColor = colour;
+    colourContents.style.backgroundColor = colour;
     expressionText.innerHTML = expressionName;
 }
 
 video.addEventListener('playing', () =>
 {
-    // How often the face detection should run in ms
-    var updateDelay = 50;
-
     const canvas = faceapi.createCanvasFromMedia(video);
 
     canvas.width = video.offsetWidth;
@@ -97,24 +98,24 @@ video.addEventListener('playing', () =>
         {
             faceTimeoutCounter = 0;
 
-            if(detections[0].expressions.neutral > 0.7)         changeExpressionColour('#eeeeee', 'Netural');
-            else if(detections[0].expressions.happy > 0.7)      changeExpressionColour('#71d941', 'Happy');
-            else if(detections[0].expressions.angry > 0.7)      changeExpressionColour('#d94141', 'Angry');
-            else if(detections[0].expressions.surprised > 0.7)  changeExpressionColour('#effa19', 'Surprised');
-            else if(detections[0].expressions.sad > 0.7)        changeExpressionColour('#419ad9', 'Sad');
-            else if(detections[0].expressions.disgusted > 0.7)  changeExpressionColour('#9741d9', 'Disgusted');
-            else if(detections[0].expressions.fearful > 0.7)    changeExpressionColour('#474747', 'Fearful');
+            if(detections[0].expressions.neutral > expressionThreshold)         changeExpressionColour('#eeeeee', 'Netural');
+            else if(detections[0].expressions.happy > expressionThreshold)      changeExpressionColour('#71d941', 'Happy');
+            else if(detections[0].expressions.angry > expressionThreshold)      changeExpressionColour('#d94141', 'Angry');
+            else if(detections[0].expressions.surprised > expressionThreshold)  changeExpressionColour('#effa19', 'Surprised');
+            else if(detections[0].expressions.sad > expressionThreshold)        changeExpressionColour('#419ad9', 'Sad');
+            else if(detections[0].expressions.disgusted > expressionThreshold)  changeExpressionColour('#9741d9', 'Disgusted');
+            else if(detections[0].expressions.fearful > expressionThreshold)    changeExpressionColour('#474747', 'Fearful');
         }
 
-        // Removes expression colour flickering to white if face detection is lost for a moment
+        // Removes the expression colour flickering to white if face detection is lost for a moment
         if(detections.length === 0)
         {
             faceTimeoutCounter += updateDelay;
             
-            // If there has been no detection after 500ms...
+            // If there has been no detection for 500ms...
             if(faceTimeoutCounter > 500)
             {
-                colourSection.style.backgroundColor = '#aaaaaa';
+                colourContents.style.backgroundColor = '#aaaaaa';
             }
         }
     },

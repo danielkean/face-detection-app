@@ -3,7 +3,7 @@
 // Requires
 const path = require('path');
 const { app } = require('electron');
-const Window = require('./js/window');
+const Window = require('./window');
 
 // Window Objects
 let mainWindow = null;
