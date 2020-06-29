@@ -1,0 +1,106 @@
+/* #region Fonts -------------------------------------------------------------- */
+
+@font-face
+{
+    font-family: Roboto-Regular;
+    src: url("../assets/fonts/Roboto-Regular.ttf");
+}
+
+@font-face
+{
+    font-family: Roboto-Bold;
+    src: url("../assets/fonts/Roboto-Bold.ttf");
+}
+
+/* #endregion -------------------------------------------------------------------- */
+
+body
+{
+    margin: 0px;
+
+    background: black;
+}
+
+.container
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-rows: minmax(100px, auto);
+
+    height: 100vh;
+    width: 100%;
+}
+
+.container > div
+{
+    padding: 1em;
+}
+
+.title
+{
+    text-align: center;
+    padding: 0.25em;
+    
+    font-family: 'Roboto-Bold';
+    background-color: #5d4954;
+    color: rgb(226, 226, 226);
+    text-transform: uppercase;
+}
+
+/* #region Contents -------------------------------------------------------------------- */
+
+#contents
+{
+    display: grid;
+    grid-template-columns: auto 1fr;            /* Number of columns in the content section */
+    grid-template-rows: fit-content(100%); /* Number of rows in the content section */
+    gap: 1em;
+    
+    background-color: #2b2126;
+}
+
+#contents > div
+{
+    outline: 3px solid #41323a;
+}
+
+#video-container
+{
+    display: grid;
+    margin: auto;
+
+    background: rgb(226, 226, 226);
+}
+
+#video-container video
+{
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: center;
+    width: auto;
+}
+
+#video-container canvas
+{
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: center;
+}
+
+#colour-contents
+{
+    background: rgb(226, 226, 226);
+}
+
+#expression-text
+{
+    text-align: center;
+    position: relative;
+    top: 50%;
+
+    font-family: 'Roboto-Bold';
+    font-size: large;
+}
+
+/* #endregion -------------------------------------------------------------------- */

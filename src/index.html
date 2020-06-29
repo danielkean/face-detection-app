@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>Face Detection App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+        <script defer src="node_modules/face-api.js/dist/face-api.min.js"></script>
+        <script defer src="js/face-detection.js"></script>
+        
+        <!-- CSS Files -->
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <div id="contents">
+                
+                <div id="video-contents">
+
+                    <div class="title">
+                        Video Output
+                    </div>
+
+                    <div id="video-container">
+                        <video id="video" autoplay muted></video>
+                    </div>
+
+                </div>
+
+                <div id="colour-contents">
+
+                    <div class="title">Expression Indicator</div>
+                    <div id="expression-text"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

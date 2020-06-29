@@ -1,0 +1,27 @@
+{
+  "name": "face-detection-app",
+  "version": "0.0.1",
+  "description": "An Electron app that uses the face-api.js library to detect faces and expressions by utilising the webcam.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielkean/face-detection-app.git"
+  },
+  "author": "Daniel Kean",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielkean/face-detection-app/issues"
+  },
+  "homepage": "https://github.com/danielkean/face-detection-app#readme",
+  "devDependencies": {
+    "electron": "^9.0.4"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^2.0.1",
+    "canvas": "^2.6.1",
+    "face-api.js": "^0.22.2"
+  }
+}
